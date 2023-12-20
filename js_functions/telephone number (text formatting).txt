@@ -1,0 +1,32 @@
+mine:
+function createPhoneNumber(numbers) {
+    let s = numbers + ''
+    let n = numbers.split(',')
+    return `(${n.slice(0, 3).join('')}) ${n.slice(3, 6).join('')}-${n.slice(6).join('')}`
+}
+
+other users:
+function createPhoneNumber(numbers){
+  var format = "(xxx) xxx-xxxx";
+
+  for(var i = 0; i < numbers.length; i++)
+  {
+    format = format.replace('x', numbers[i]);
+  }
+
+  return format;
+}
+
+alt:
+function createPhoneNumber(numbers){
+  numbers = numbers.join('');
+  return '(' + numbers.substring(0, 3) + ') '
+      + numbers.substring(3, 6)
+      + '-'
+      + numbers.substring(6);
+}
+
+alt:
+function createPhoneNumber(numbers){
+  return numbers.join('').replace(/(...)(...)(.*)/, '($1) $2-$3');
+}

@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="/style.css" rel="stylesheet" type="text/css">
+    <title>HTMX EXPRESS</title>
+    <script src="https://unpkg.com/htmx.org@1.9.9"></script>
+</head>
+<body>
+    <main class="main">
+        <h1>&#8460;</h1>
+        <!-- <div id="testDiv">Test Div</div> -->
+        <div class="buttonsContainer">
+            <button hx-post="/vscode" class="btnBreathe" hx-target="#data">VS Code</button>
+            <button hx-post="/vim" class="btnBreathe2" hx-target="#data">Vim</button>
+            <button hx-post="/functions" id="randomf" hx-target="#data">Random &#402;</button>
+            <button hx-get="/javadata" id="java" hx-target="#data">Java</button>
+        </div>
+
+        <!-- <div hx-get="/clickdiv" hx-swap="afterend" hx-confirm="See the stuffs?">My list of stuff:</div> -->
+
+        <section id="data" class="sectionContainer"></section>
+        <!-- <div class="sectionContainer"> -->
+        <!-- </div> -->
+    </main>
+    <script>
+        const timer = t => new Promise(res => setTimeout(res, t));
+        document.querySelector('.btnBreathe').addEventListener('click', () => {
+            document.querySelector('#data').classList.add('slideInClass');
+            timer(1000)
+                .then(() => document.querySelector('#data').classList.remove('slideInClass'))
+        });
+        document.querySelector('.btnBreathe2').addEventListener('click', () => {
+            document.querySelector('#data').classList.add('slideInClass');
+            timer(1000)
+                .then(() => document.querySelector('#data').classList.remove('slideInClass'))
+        });
+        document.querySelector('#randomf').addEventListener('click', () => {
+            document.querySelector('#data').classList.add('slideInClass');
+            timer(1000)
+                .then(() => document.querySelector('#data').classList.remove('slideInClass'))
+        });
+        document.querySelector('#java').addEventListener('click', () => {
+            document.querySelector('#data').classList.add('slideInClass');
+            timer(1000)
+                .then(() => document.querySelector('#data').classList.remove('slideInClass'))
+        });
+    </script>
+</body>
+</html>

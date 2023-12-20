@@ -1,0 +1,10 @@
+const solution = (numbers) => {
+    if (numbers.forEach(i => !typeof(i) === 'number')) {
+        return 0
+    } else {
+        return Math.max(...numbers)
+    }
+};
+
+this also checks if the item in the list is a number
+Math.max(...Array) is what checks for the largest number in your array

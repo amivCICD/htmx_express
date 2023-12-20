@@ -1,0 +1,21 @@
+
+let myObject = {
+    value: 0,
+    increment: function(val) {
+        this.value += typeof val === 'number' ? val : 1;
+    }
+}
+
+myObject.increment(10)
+
+function add(a, b) {
+    return a + b
+}
+
+myObject.double = function() {
+    let that = this;
+    let helper = function() {
+        that.value = add(that.value, that.value)
+    }
+    helper();
+}

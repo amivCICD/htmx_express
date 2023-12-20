@@ -1,0 +1,18 @@
+function duplicateCount(text) {
+
+  let textArr = text.toLowerCase().split('')
+  let vals = textArr.reduce((obj, item) => {
+  if (!obj[item]) {
+    obj[item] = 0
+  }
+  obj[item]++
+  return obj
+}, {})
+
+let reducedVals = Object.values(vals).map(item => item > 1) // this gives us a boolean array, true if more than 1 occurence
+let a = reducedVals.filter(value => value).length // this filters booleans and we check the count of true mtw occurences
+return a
+}
+
+this checks for which letters or numbers are duplicated, it goes beyond 'how many' duplicates,
+but the quantity of duplicates. e.g. if a b and c have occur more than once, we return 3

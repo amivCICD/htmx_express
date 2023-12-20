@@ -1,0 +1,10 @@
+const delay = time => new Promise(resolve => setTimeout(resolve, time))
+
+then (no pun intended) you can chain onto this as:
+
+delay(3000)
+    .then(() => console.log('first delay'))
+    .then(() => delay(3000))
+    .then(() => console.log('second delay'))
+
+if you dont put the callback function ( () => ), the next .then will execute immediately after the one before it

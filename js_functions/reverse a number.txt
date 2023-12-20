@@ -1,0 +1,9 @@
+
+
+function reverse_a_number(n){
+    n = n + "";
+    return n.split("").reverse().join("");
+}
+console.log(Number(reverse_a_number(32243)));
+
+https://www.w3resource.com/javascript-exercises/javascript-function-exercise-1.php

@@ -1,0 +1,35 @@
+function next(array, pageNum) {
+    let limit = 12; // e.g. arr.length = 20 and 20/5 = 4 results per page, so limit - 1 = results
+    let perPage = array.length / limit; // this number is our PER PAGE
+    
+    let offSet = perPage * pageNum;
+    let currentPage = array.slice(offSet - perPage, offSet)
+    return currentPage.map((i) => i)
+}
+
+// The above is for 'left and right' arrows
+
+// Below is for applying dots to the in-between pages
+
+let pageNumber = 1
+let pagiNums = document.getElementById('pagiNums')
+document.getElementById('next')?.addEventListener('click', e => {
+    e.preventDefault()
+    pageNumber = pageNumber += 1
+
+    next(resObjInfo, pageNumber)
+    
+    let dots = pagiNumsArrLength.map((i) => {
+        if (i !== pageNumber && pagiNumsArrLength.length !== i && i > pageNumber + 2) {
+            return i = '...'
+        } else if (i !== 1 && pageNumber > 1 && i < pageNumber) {
+            return i = ']]]'
+        }
+        return i
+    })
+    
+    let dots2 = [...new Set(dots)]
+    
+    pagiNums.innerHTML = dots2.join(' ')
+    
+})

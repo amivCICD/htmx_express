@@ -1,0 +1,5 @@
+function longestWord(sentence) {
+    let str = sentence.split(' ')
+    let longWord = str.reduce((a, b) => a.length > b.length ? a : b, 0)
+    return longWord;
+}

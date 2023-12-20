@@ -1,0 +1,7 @@
+function moveZeros(arr) {
+  const zeros = arr.filter(v => v === 0).length;
+  if (zeros > 0) {
+    return arr.filter(v => v !== 0).concat(Array(zeros).fill(0));
+  }
+  return arr;
+}

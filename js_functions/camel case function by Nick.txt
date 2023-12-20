@@ -1,0 +1,42 @@
+function toCamelCase(str){
+
+  function isNullOrWhitespace(str) {
+    return ((str === null) || (str === undefined) || (str === '') || (/^\s+$/.test(str)));
+  }
+
+  function isLeadingUpper(str) {
+    return !isNullOrWhitespace(str) && (str[0] === str[0].toUpperCase());
+  }
+
+  if (isNullOrWhitespace(str)) return str;
+
+  const strParts = str.includes('-') ? str.split('-') : str.split('_');
+
+  for (let i = 1; i < strParts.length; i++) {
+    if (!isLeadingUpper(strParts[i])) {
+      strParts[i] = `${strParts[i][0].toUpperCase()}${strParts[i].slice(1)}`
+    }
+  }
+  return strParts.join('')
+}
+
+alternatives by other top votes:
+
+function toCamelCase(str){
+      var regExp=/[-_]\w/ig;
+      return str.replace(regExp,function(match){
+            return match.charAt(1).toUpperCase();
+       });
+}
+
+alt:
+
+function toCamelCase(str){
+  return str.replace(/[-_](.)/g, (_, c) => c.toUpperCase());
+}
+
+alt:
+
+function toCamelCase(str){
+  return str.split(/-|_/g).map((w, i) => (i > 0 ? w.charAt(0).toUpperCase() : w.charAt(0)) + w.slice(1)).join('');
+}

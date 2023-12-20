@@ -1,0 +1,11 @@
+function getCount(str) {
+  return [...str.matchAll(/[aeiou]/g)].length;
+}
+
+// counting all the vowels apparently
+
+// get all text between html tags:
+let html = '<p>hello</p><div>this one is div</div>'
+html.match(/(?<=>)[^<]+(?=<)/g);
+
+// result: ['hello', 'this one is div']

@@ -1,0 +1,175 @@
+html {
+    /* background: linear-gradient(50deg, rgb(140, 83, 148), rgba(200,200,250) 50%); */
+    /* background: linear-gradient(7deg, rgba(219,193,17,1) 0%, rgba(253,164,29,1) 50%, rgba(252,176,69,1) 100%); */
+
+    /* background: linear-gradient(0deg, #ffb45c, #f17941, #ffab49, #ff6800); */
+    background: linear-gradient(0deg, #422e18, #000000, #3a2711, #2c190c);
+    background-size: 800% 800%;
+
+    -webkit-animation: RollingGradient 120s ease infinite;
+    -moz-animation: RollingGradient 120s ease infinite;
+    animation: RollingGradient 120s ease infinite;
+
+    width: 100%;
+    box-sizing: border-box;
+    height: 100vh;
+    margin: 0;
+    padding: 0;
+    font-family: 'Gill Sans', 'Gill Sans MT', Calibri, 'Trebuchet MS', sans-serif;
+    font-size: 1.25rem;
+}
+
+
+.btnBreathe {
+    animation: breathing 5s ease-in infinite;
+    color: orange;
+}
+.btnBreathe2 {
+    animation: breathing2 3s ease-in infinite;
+    color: orange;
+}
+@keyframes breathing {
+    0%{background-color: #422e18;}
+    25%{background-color: #000000;}
+    50%{background-color: #3a2711}
+    75%{background-color: #2c190c}
+    100%{background-color: #422e18;}
+
+}
+@keyframes breathing2 {
+    0%{background-color: #422e18;}
+    25%{background-color: #000000;}
+    50%{background-color: #3a2711}
+    75%{background-color: #2c190c}
+    100%{background-color: #422e18;}
+}
+
+@-webkit-keyframes RollingGradient {
+    0%{background-position:50% 0%}
+    50%{background-position:51% 100%}
+    100%{background-position:50% 0%}
+}
+@-moz-keyframes RollingGradient {
+    0%{background-position:50% 0%}
+    50%{background-position:51% 100%}
+    100%{background-position:50% 0%}
+}
+@keyframes RollingGradient {
+    0%{background-position:50% 0%}
+    50%{background-position:51% 100%}
+    100%{background-position:50% 0%}
+}
+
+@media  (max-width: 400px) {
+    html {
+        font-size: .75rem;
+    }
+    body {
+        overflow-x: scroll;
+    }
+}
+
+body {
+    height: 100%;
+    display: flex;
+    overflow-x: hidden;
+    overflow-y: scroll;
+    margin: 0;
+    padding: 0;
+    justify-content: center;
+    color: orange;
+
+}
+
+
+#hideBtn {
+    background: rgba(55, 0, 200, .5);
+    border-radius: 10%;
+    border: 1px dashed red;
+    font-weight: 600;
+    padding: .5rem;
+    margin-top: 1rem;
+}
+
+.sectionContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    /* justify-content: center; */
+    width: 100%;
+    height: 100%;
+    font-family: monospace;
+    padding: 10px 10px 72px 10px;
+
+}
+.slideInClass {
+    /* overflow: hidden; */
+    transition-timing-function: cubic-bezier(0.4, 0, 1, 1);
+    animation: slideIn 1s;
+}
+
+@keyframes slideIn {
+    /* 0% {
+        width: 0;
+        height: 100%;
+    }
+    100% {
+        width: 100%;
+        height: 100%;
+    } */
+    0% {
+        transform: translateY(100%);
+        opacity: 0%;
+    }
+    75% {
+        opacity: 30%;
+    }
+    100% {
+        transform: translateY(0%);
+        opacity: 100%;
+
+    }
+}
+
+  main {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+}
+
+.buttonsContainer {
+    margin: .5rem;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: center;
+    gap: 1rem;
+}
+h1 {
+    text-align: center;
+    margin: 1rem;
+    font-size: 3rem;
+    font-style: italic;
+}
+
+button {
+    /* background-image: linear-gradient(to right, #000000 0%, #ff734d 51%, #000000 100%); */
+    text-transform: uppercase;
+    /* color: greenyellow; */
+    color: black;
+    padding: .45rem;
+    border-radius: 30px;
+    font-style: italic;
+    font-weight: 900;
+    cursor: pointer;
+    transition: transform 0.3s ease;
+
+}
+
+button:hover {
+    background-image: linear-gradient(to right, #000000 0%, #e2e2e2 51%, #000000 100%);
+    color: greenyellow;
+    transform: scale(1.12);
+}
+
+
