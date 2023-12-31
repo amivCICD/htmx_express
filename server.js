@@ -92,7 +92,83 @@ const vimTemplate = `
   <li>^z - switch to terminal (fg - foreground to go back to vim) </li>
   </ul>
 `
+const vimExtended = `
+<ul>
+  <li><strong>Basic Movements:</strong>
+    <ul>
+      <li><code>h, j, k, l</code>: Move left, down, up, and right respectively.</li>
+      <li><code>w, e, b</code>: Move forward by word, move to the end of the current word, move backward by word.</li>
+      <li><code>0, ^, $</code>: Move to the beginning of the line, move to the first non-blank character of the line, move to the end of the line.</li>
+      <li><code>gg, G</code>: Move to the beginning of the file, move to the end of the file.</li>
+    </ul>
+  </li>
 
+  <li><strong>Editing Text:</strong>
+    <ul>
+      <li><code>i, I, a, A</code>: Enter insert mode (before cursor, beginning of line, after cursor, end of line).</li>
+      <li><code>o, O</code>: Open a new line below or above the current line and enter insert mode.</li>
+      <li><code>x, dd</code>: Delete character under cursor, delete the whole line.</li>
+      <li><code>u, Ctrl-R</code>: Undo, redo.</li>
+      <li><code>yy, p</code>: Copy (yank) the current line, paste the copied line.</li>
+    </ul>
+  </li>
+
+  <li><strong>Visual Mode:</strong>
+    <ul>
+      <li><code>v</code>: Enter visual mode to select characters.</li>
+      <li><code>V</code>: Enter visual line mode to select whole lines.</li>
+      <li><code>Ctrl-V</code>: Enter visual block mode to select rectangular blocks.</li>
+    </ul>
+  </li>
+
+  <li><strong>Indentation:</strong>
+    <ul>
+      <li><code>>>, <<</code>: Indent right, indent left.</li>
+      <li><code>=</code>: Auto-indent selected lines.</li>
+    </ul>
+  </li>
+
+  <li><strong>Search and Replace:</strong>
+    <ul>
+      <li><code>/pattern</code>: Search forward for a pattern.</li>
+      <li><code>?pattern</code>: Search backward for a pattern.</li>
+      <li><code>:s/old/new/g</code>: Substitute "old" with "new" globally in the current line.</li>
+      <li><code>:%s/old/new/g</code>: Substitute "old" with "new" globally in the whole file.</li>
+    </ul>
+  </li>
+
+  <li><strong>Marks:</strong>
+    <ul>
+      <li><code>ma, 'a, \`a</code>: Set mark 'a', jump to line of mark 'a', jump to exact position of mark 'a'.</li>
+    </ul>
+  </li>
+
+  <li><strong>Buffers and Files:</strong>
+    <ul>
+      <li><code>:e filename</code>: Open a file.</li>
+      <li><code>:w</code>: Save the file.</li>
+      <li><code>:q</code>: Quit Vim.</li>
+      <li><code>:wq or ZZ</code>: Save and quit.</li>
+    </ul>
+  </li>
+
+  <li><strong>Macros:</strong>
+    <ul>
+      <li><code>qa, q</code>: Record a macro to register 'a', stop recording.</li>
+      <li><code>@a</code>: Execute the macro in register 'a'.</li>
+    </ul>
+  </li>
+
+  <li><strong>Splitting Windows:</strong>
+    <ul>
+      <li><code>:split</code>: Split window horizontally.</li>
+      <li><code>:vsplit</code>: Split window vertically.</li>
+      <li><code>Ctrl-w, w</code>: Switch between windows.</li>
+    </ul>
+  </li>
+</ul>
+
+`
 
 
 
@@ -142,6 +218,9 @@ server.post('/vscode', (req, res) => {
 server.post('/vim', (req, res) => {
     res.send(vimTemplate);
 });
+server.post('/vimextended', (req, res) => {
+    res.send(vimExtended);
+})
 
 server.get('/javadata', (req, res) => {
     const data = [javaData1, javaData2, javaData3, javaData4];

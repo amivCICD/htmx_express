@@ -9,11 +9,12 @@
 </head>
 <body>
     <main class="main">
-        <h1>&#8460;</h1>
+        <h1 class="grow-text">&#8460;</h1>
         <!-- <div id="testDiv">Test Div</div> -->
         <div class="buttonsContainer">
             <button hx-post="/vscode" class="btnBreathe" hx-target="#data">VS Code</button>
             <button hx-post="/vim" class="btnBreathe2" hx-target="#data">Vim</button>
+            <button hx-post="/vimextended" id="vimx" class="btnBreathe2" hx-target="#data">VimX</button>
             <button hx-post="/functions" id="randomf" hx-target="#data">Random &#402;</button>
             <button hx-get="/javadata" id="java" hx-target="#data">Java</button>
         </div>
@@ -32,6 +33,11 @@
                 .then(() => document.querySelector('#data').classList.remove('slideInClass'))
         });
         document.querySelector('.btnBreathe2').addEventListener('click', () => {
+            document.querySelector('#data').classList.add('slideInClass');
+            timer(1000)
+                .then(() => document.querySelector('#data').classList.remove('slideInClass'))
+        });
+        document.querySelector('#vimx').addEventListener('click', () => {
             document.querySelector('#data').classList.add('slideInClass');
             timer(1000)
                 .then(() => document.querySelector('#data').classList.remove('slideInClass'))

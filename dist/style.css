@@ -130,6 +130,18 @@ body {
 
     }
 }
+@keyframes grow {
+    0%, 100% {
+        transform: scale(1);
+    }
+    50% {
+        transform: scale(1.2)
+    }
+}
+
+.grow-text {
+    animation: grow 3s infinite ease-in-out;
+}
 
   main {
     display: flex;
@@ -171,5 +183,14 @@ button:hover {
     color: greenyellow;
     transform: scale(1.12);
 }
+
+ul {
+    list-style-type: none;
+    padding: 0 12px 0 12px;
+}
+ul li {
+    padding: 0 12px 0 12px;
+}
+
 
 
