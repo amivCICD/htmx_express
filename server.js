@@ -46,6 +46,7 @@ const vsCodeTemplate = `
         <li>Ctrl+K F &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Close folder</li>
         <li>Ctrl+Tab&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;- Open next</li>
         <li>Ctrl+K Ctrl+W&nbsp;&nbsp;&nbsp;- Close All</li>
+        <li>Ctrl+K Ctrl+0&nbsp;&nbsp;&nbsp;- Close All Functions</li>
         <li>Ctrl+K ← / → &nbsp;&nbsp;&nbsp;- Move active editor group</li>
         <li>Ctrl+ 1-2-3 &nbsp;&nbsp;&nbsp;&nbsp;- Focus into group</li>
         <li>Ctrl+K Ctrl+X &nbsp;&nbsp;- Trim trailing whitespace</li>
@@ -55,7 +56,6 @@ const vsCodeTemplate = `
         <li>Ctrl+K Z (Zen)&nbsp;&nbsp;- (EscX2 exit)</li>
     </ul>
 `
-
 const vimTemplate = `
 <ul style="list-style-type: none; padding: 0;">
 <li>~~~~VIM HOTKEYS~~~~</li>
