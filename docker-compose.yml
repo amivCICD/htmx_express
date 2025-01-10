@@ -1,0 +1,11 @@
+version: "3.4"
+
+services:
+  htmx_express:
+    image: htmx_express 
+    build:
+      context: .
+      dockerfile: ./Dockerfile
+      ports:
+        - 2222:2222
+

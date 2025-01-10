@@ -11,14 +11,11 @@ const __filename = fileURLToPath(import.meta.url)
 const __dirname = path.dirname(__filename)
 
 const server = express();
-const PORT = process.env.PORT || 8888;
+const PORT = process.env.PORT || 2222;
 
-// console.log(__dirname)
-// console.log(__dirname + '/dist')
 
 server.use(bodyParser.urlencoded({ extended: true }));
 server.use(bodyParser.json());
-// server.use(express.static(__dirname)); // this replaces your GET '/'
 server.use(express.static(__dirname + '/dist'));
 
 
@@ -168,7 +165,7 @@ const vimExtended = `
   </li>
 </ul>
 
-`
+`;
 
 
 
@@ -180,8 +177,7 @@ function decipher(cb) {
             cb(err, null);
         } else {
             const decipherArray = data;
-            // console.log(decipherArray);
-            cb(null, decipherArray, rf)
+            cb(null, decipherArray, rf);
         }
 
     })
@@ -192,9 +188,6 @@ server.post('/functions', (req, res) => {
             res.status(500).send('Error Reading File on Server...Please try Again!')
         } else {
             const rfFormat = `<h2 style="margin-bottom:8px;">${rf.slice(0, -4)}</h2><br>`
-            // res.setHeader('Content-Length', Buffer.from(result.join(''), 'utf-8').length);
-            // res.setHeader('Content-Length', Buffer.from(result, 'utf-8').length);
-            // res.setHeader('Content-Type', 'text/plain');
             res.send(`<pre>${rfFormat}${result}</pre>`);
 
         }
@@ -207,9 +200,6 @@ server.post('/functions', (req, res) => {
 server.get('/', (req, res) => {
     res.sendFile(path.join(__dirname, 'index.html'))
 });
-// server.get('/navbar', (req, res) => {
-//     res.sendFile(path.join(__dirname, 'navbar.html'))
-// });
 
 server.post('/vscode', (req, res) => {
     res.send(vsCodeTemplate);
@@ -228,7 +218,7 @@ server.get('/javadata', (req, res) => {
     {
         let randomData = Math.floor(Math.random() * data.length);
         res.send(data[randomData]);
-    }())
+    }());
 })
 
 server.post('/clicked', (req, res) => {
@@ -238,14 +228,6 @@ server.post('/clicked', (req, res) => {
 server.get('/clickdiv', (req, res) => {
     res.send('one thing, two things, three things')
 })
-
-
-
-
-
-
-
-
 
 server.listen(PORT, () => {
     console.log(`Server listening on PORT ${PORT}~`);
