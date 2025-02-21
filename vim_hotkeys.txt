@@ -1,33 +1,220 @@
-~~~~VIM HOTKEYS~~~~
-:u - undo
-:e - explorer (will create new file or explore existing file)
-:pwd - print working directory
-:ls - show files in directory
-:set nu || number - turn on absolute line numbers
-:m <n> - move line to line n
-ddkP || ddjP - move item up/down a line 
+ULTIMATE VIM COMMANDS SHEET
 
-----Navigation----
-l - right
-h - left
-j - up
-k - down
-l - right
-0 - beginning of line
-$ - end of line
-o - insert below line
-i - insert where cursor lies
-s - insert and delete cursor character
-a - insert after cursor (append)
-dd - delete line
+dd -> delete current line
+p -> paste below
+P -> paste above
 
-----Exiting Entering----
-^z - switch to terminal (fg - foreground to go back to vim) 
-^[ - cancel
-^v - select entire line
-:e ^d - show files in current directory
-:q - quit
-:wq - quit & save
-:w - (write) save
+w -> jump forward one word
+e -> jump to end of current word
+b -> jump backward one word
+ge -> jump to the end of previous word
+{/} -> move up/down by paragraph
+% -> jump to closing/opening function bracket
 
+() -> move by sentences
+[[]] -> jump between code blocks
+{{}} -> move between bracketed code blocks
 
+xp -> swap two letters
+daw -> delete a word
+ciw -> change a word
+
+gg -> go to top of file
+G -> go to bottom of file
+H -> go to top of the screen
+M -> go to middle of screen
+L -> go to bottom of screen
+ctrl + d -> move down half a page
+ctrl + u -> move up half a page
+ctrl + b -> move up one full page
+ctrl + f -> move down one full page
+
+/word -> search for word in file
+n -> jump to the next match
+N -> jump to the previous match
+:%s/old/new/g -> replace old with new in whole file
+:%s/old/new/gc -> replace with confirmation
+:file -> get current file information
+
+u -> undo
+ctrl + r -> redo
+. -> repeat last change
+
+i -> insert before cursor
+a -> append after cursor
+I -> insert at start of the line
+o -> open a new line below and enter insert mode
+O -> insert above line
+
+C -> cut everything to the right of cursor on same line
+yy -> copy a line
+p -> paste after the cursor
+P -> paste before the cursor
+dd -> cut a line
+cc -> cut a line (or highlight) and go into insert movie
+D -> delete everything to the right of cursor
+examples -> to copy 3 lines, use 3yy; to delete 3 words use d3w
+
+v -> visual mode text selection
+V -> start visual line mode
+ctrl + v -> start visual block mode
+y -> copy selection
+d -> delete selection
+examples -> press V and move down 4 lines & press > to indent
+
+POWER EDITING
+ctrl + v -> block mode (select columns)
+I -> insert before every selected row
+A -> append after every selected row
+rX -> replace selected text with X
+
+>> -> indent a line
+<< -> unindent a line
+= -> auto format code
+gg=G -> re-indent the entire file
+
+mX -> mark a location, replace X with a letter
+'X -> jump back to that mark
+<space> -> jump back to where you were
+
+FASTER NAVIGATION WITHIN A LINE
+^ -> go to first non blank character
+g_ -> go to last non blank character
+fx -> jump to next occurrence of x in line
+Fx -> jump backward to x
+tx -> jump right before x
+Tx -> jump left before x
+; -> repeat last character search (f, t, etc.)
+, -> repeat it in reverse
+
+MACROS
+-> press qa to start recording into register a
+-> perform commands
+-> press q to stop recording
+-> press @a to replay macro
+-> press @@ to repeat the last macro
+-> 10@a " runs the macro 10 times
+
+J -> join the next line with the current one
+gJ -> join lines without spaces
+~ -> toggle case upper/lower
+ctrl + a -> increase a number
+ctrl + x -> decrease a number
+
+COMMAND MODE
+:e filename -> open a file
+:w -> save file
+:q -> quit
+:wq -> save & quit
+:q! -> force quit without save
+:bn -> go to next buffer
+:bp -> go to previous buffer
+
+NAVIGATING SPLITS
+:vnew -> create a new split with empty buffer (:new for hori)
+:vert term -> create a terminal on other side
+:vsplit | term -> splits screen but with a terminal splitting that screen
+:sp & :vsp -> split and vertical split
+:ctrl + w + v -> vertical split by hotkey
+:q -> close current split
+:close -> close current split
+:only -> closes other splits keeping only the current one
+ctrl + w c -> close the current split
+ctrl + w o -> close all other splits (same as :only)
+ctrl + w w -> move to next split
+ctrl + w h/j/k/l -> move left down up right
+:wincmd H -> move window to the left (:winc H for short)
+:wincmd L -> move window to right
+:wincmd x -> swap two windows
+:wincmd R -> cycle splits around
+
+MY PERSONAL CHOICES AS OF 02 15 2025
+:vert edit ~/ULTIMATE_VIM_COMMANDS.TXT
+:vsp | e ~/main.js
+
+* -> find next occurrence of the word under the cursor
+# -> find previous occurrence
+g* -> like * but matches partial words
+g$ -> like # but matches partial words
+/seach_forward -> self e.g. /word
+?search_backward -> self e.g. ?word
+
+QUICK MULTI CURSOR TRICK
+-> search for a word using /word
+-> cgn change the word and go to the next match
+-> . to repeat
+
+g~ -> toggle upper/lowercase
+gUU -> makine line uppercase
+
+BETTER FILE MANAGEMENT
+:n file.txt -> open file.txt in same vim session
+:sp file.txt -> open file in horizontal split
+:vsp file.txt -> open file in vertical split
+:tabnew file.txt -> open file in a new tab
+gt -> go to next tab
+gT -> go to previous tab
+:ls -> show open buffers
+:b1 -> switch to buffer #1
+q: -> check recent buffer 
+@: -> repeat last command
+: ctrl+p || ctrl+n -> cycle through commands
+: ctrl+f -> pull up list of recent commands and cycle, :q to close menu
+: up || down arrows -> scroll through commands
+
+COPY AND PASTING LIKE A PRO
+"ay -> copy to register a
+"ap -> paste from register a
++y -> copy to system clipboard
++p -> paste from system clipboard
+-> example "ayiw (copy word into register 'a'), paste anywhere with "ap
+
+ADVANCED FORMATTING
+:set number -> show numbers on left
+:set relativenumber -> relative nums
+:set list -> show invisibile characters (tabs, spaces)
+:set wrap -> enable/disable word wrapping
+:set spell -> turn on spell check
+gg=G -> auto-indent everything
+
+RUNNING SHELL COMMANDS INSIDE VIM
+:!ls -> run ls in the shell
+:!mkdir new_folder -> create folder without leaving vim
+:r !date -> insert current date into file
+!!python -> run current line as python command
+-> example to insert output of a command (like ip) :r !ip a
+:w !python3 -> run code without deleting it (write to python)
+:w !ls -> get terminal command results inside vim
+
+SPEED BOOSTED PRODUCTIVITY COMBOS
+g; -> jump to last change
+g, -> jump to previous change
+@: -> repeat last command line command
+
+OPEN A TERMINAL IN VIM
+:term -> open wsl terminal
+:term python3 -> open python REPL
+:!python3 -> select lines in visual mode to execute 
+
+USING CTRL + P
+ctrl + v -> select file and open in vertical split
+ctrl + x -> select file and open in horizontal split
+
+GET WORD LINE, WORD, CHAR COUNT
+:w !wc -> shows lwc count in vim
+:%!wc -> shows line, word, char count (warning, it replaces your text)
+:r !wc % -> appends lwc count to vim file
+:!wc % -> pulls you to terminal and shows you lwc count
+
+OPTIMIZATIONS FOR VIM
+set ttyfast -> speed up screen redrawing
+set lazyredraw -> redraw only when needed
+set noswapfile -> disable swap files (can slow down commands)
+set timeoutlen=300 -> reduce key timeout delay
+set ttimeoutlen=10 -> reduce terminal key sequence delay
+set autoindent -> copy indentation from previous line
+set smartindent ->
+set cindent -> enable C-style indentation
+set shiftwidth=4 -> set indentation width to 4 space
+set tabstop=4 -> set tab width to 4 spaces
+set expandtab -> use spaces instead of tabs (optional)
