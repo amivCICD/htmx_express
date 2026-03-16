@@ -7,8 +7,8 @@ import { fileNames } from './random_file.js';
 import { getRandomFileName } from './random_file.js';
 import { javaData1, javaData2, javaData3, javaData4 } from './javaData.js';
 
-const __filename = fileURLToPath(import.meta.url)
-const __dirname = path.dirname(__filename)
+const __filename = fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 
 const server = express();
 const PORT = process.env.PORT || 2222;
