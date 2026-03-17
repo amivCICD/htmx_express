@@ -5,20 +5,42 @@ on:
     branches: [ "master" ]
 
 jobs:
-  stop_build_run:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout Code
+        uses: actions/checkout@v4
+
+      - name: Login to Docker Hub
+        run: echo "${{ secrets.DOCKERHUB_PASSWORD }}" | docker login -u "${{ secrets.DOCKERHUB_USERNAME }}" --password-stdin
+
+      - name: Build Image
+        run: docker build -t artimusmaximus/htmx_express:latest .
+
+      - name: Push Image
+        run: docker push artimusmaximus/htmx_express:latest
+
+  stop_and_run:
     runs-on: self-hosted
+    needs: build
+
     env:
-      IMAGE_NAME: htmx_express
+      IMAGE: artimusmaximus/htmx_express:latest
+      CONTAINER: htmx_express
       PORT: 2222
 
     steps:
-      - name: Checkout Repo
-        uses: actions/checkout@v4
+      - name: Pull latest image
+        run: docker pull $IMAGE
+
       - name: Shut down current container
         run: |
-          docker ps -q --filter "ancestor=artimusmaximus/${{env.IMAGE_NAME}}:latest" | xargs -r docker stop
-          echo "Shutting down container ${{env.IMAGE_NAME}}" 
-      - name: pull updated container
-        run: docker pull artimusmaximus/${{env.IMAGE_NAME}}:latest
+          docker stop $CONTAINER || true
+          docker rm $CONTAINER || true
+
       - name: Start new container
-        run: docker run -d -p ${{env.PORT}}:${{env.PORT}} artimusmaximus/${{env.IMAGE_NAME}}:latest
+        run: docker run -d --name $CONTAINER -p $PORT:$PORT $IMAGE
+      
+      - name: Cleanup old Images
+        run: docker image prune -af
